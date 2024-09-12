@@ -113,10 +113,10 @@ std::tuple<dai::Pipeline, int, int> createPipeline(bool enableDepth,
     if(enableDepth && depth_aligned) stereo->setDepthAlign(dai::CameraBoardSocket::CAM_A);
 
     // Imu
-    imu->enableIMUSensor(dai::IMUSensor::ACCELEROMETER_RAW, 500);
-    imu->enableIMUSensor(dai::IMUSensor::GYROSCOPE_RAW, 400);
-    imu->setBatchReportThreshold(5);
-    imu->setMaxBatchReports(20);  // Get one message only for now.
+    imu->enableIMUSensor(dai::IMUSensor::LINEAR_ACCELERATION, 500);
+    imu->enableIMUSensor(dai::IMUSensor::GYROSCOPE_CALIBRATED, 400);
+    imu->setBatchReportThreshold(1);
+    imu->setMaxBatchReports(10);  // Get one message only for now.
 
     if(depth_aligned) {
         // RGB image

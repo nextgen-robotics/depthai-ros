@@ -3,14 +3,14 @@
     <!-- <args for urdf/> -->
     <arg name="mxId"                 default=""/>
     <arg name="usb2Mode"             default="false"/>
-    <arg name="poeMode"              default="false"/>
+    <arg name="poeMode"              default="true"/>
 
-    <arg name="camera_model"         default="OAK-D"            /> <!-- 'zed' or 'zedm' -->
+    <arg name="camera_model"         default="OAK-D-PRO"        /> <!-- 'zed' or 'zedm' -->
     <arg name="tf_prefix"            default="oak"              />
     <arg name="mode"                 default="depth"            />
     <arg name="base_frame"           default="oak-d_frame"      />
-    <arg name="parent_frame"         default="oak-d-base-frame" /> 
-    <arg name="imuMode"              default="1"                />   <!-- 0 -> COPY, 1 -> LINEAR_INTERPOLATE_GYRO, 2 -> LINEAR_INTERPOLATE_ACCEL -->
+    <arg name="parent_frame"         default="odom" /> 
+    <arg name="imuMode"              default="0"                />   <!-- 0 -> COPY, 1 -> LINEAR_INTERPOLATE_GYRO, 2 -> LINEAR_INTERPOLATE_ACCEL -->
 
     <arg name="cam_pos_x"             default="0.0" /> <!-- Position respect to base frame (i.e. "base_link) -->
     <arg name="cam_pos_y"             default="0.0" /> <!-- Position respect to base frame (i.e. "base_link) -->
@@ -28,8 +28,8 @@
     <arg name="expTime"               default="20000"/>
     <arg name="sensIso"               default="800" />
 
-    <arg name="enableSpatialDetection" default="true" />
-    <arg name="syncNN"                 default="true" />
+    <arg name="enableSpatialDetection" default="false" />
+    <arg name="syncNN"                 default="false" />
     <arg name="detectionClassesCount"  default="80"   />
     <arg name="nnName"                 default="x"         />
     <arg name="resourceBaseFolder"     default="$(find depthai_examples)/resources" />
@@ -51,7 +51,7 @@
     <arg name="angularVelCovariance"  default="0"   />
     <arg name="linearAccelCovariance" default="0"   />
 
-    <arg name="enableDotProjector"    default="false"/>
+    <arg name="enableDotProjector"    default="true"/>
     <arg name="enableFloodLight"      default="false"/>
     <arg name="dotProjectormA"        default="200.0"/>
     <arg name="floodLightmA"          default="200.0"/>

@@ -1,4 +1,5 @@
 #include "depthai_ros_driver/camera.hpp"
+//#include "BoardConfig.hpp"
 
 #include <fstream>
 #include <memory>
@@ -182,7 +183,18 @@ void Camera::onConfigure() {
 }
 
 void Camera::getDeviceType() {
+    /*Activate jumbo frame for camera device*/
+    dai::BoardConfig board;
+    board.network.mtu = 9000;
+    board.network.xlinkTcpNoDelay = false;
+    board.sysctl.push_back("net.inet.tcp.delayed_ack=1");
+    /****************************************/
+
     pipeline = std::make_shared<dai::Pipeline>();
+
+    /****************************************/
+    pipeline -> setBoardConfig(board);
+    /****************************************/
     startDevice();
     auto name = device->getDeviceName();
     ROS_INFO("Device type: %s", name.c_str());
